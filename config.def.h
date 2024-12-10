@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 10;       /* snap pixel */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -31,13 +31,17 @@ typedef struct {
 	const void *cmd;
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spfm", "-g", "120x34", "-e", "nnn", NULL };
+const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "nnn", NULL };
 const char *spcmd3[] = {"keepassxc", NULL };
+const char *spcmd4[] = {"st", "-n", "calendar", "-g", "144x60", "calendar", NULL };
+const char *spcmd5[] = {"st", "-n", "weather", "-g", "144x41", "weather", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spranger",    spcmd2},
 	{"keepassxc",   spcmd3},
+	{"calendar",   spcmd4},
+	{"weather",   spcmd5},
 };
 
 
@@ -59,6 +63,8 @@ static const Rule rules[] = {
 	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1,			 -1 },
 	{ NULL,		  "spfm",		NULL,		SPTAG(1),		1,			 -1 },
 	{ NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 },
+	{ NULL,		  "calendar",	NULL,		SPTAG(3),		1,			 -1 },
+	{ NULL,		  "weather",	NULL,		SPTAG(4),		1,			 -1 },
 };
 
 /* layout(s) */
@@ -159,6 +165,8 @@ static const Key keys[] = {
 	{ MODKEY,            			XK_y,  	   togglescratch,  {.ui = 0 } },
 	{ MODKEY,            			XK_u,	   togglescratch,  {.ui = 1 } },
 	{ MODKEY,            			XK_x,	   togglescratch,  {.ui = 2 } },
+	{ MODKEY,            			XK_c,	   togglescratch,  {.ui = 3 } },
+	{ MODKEY,            			XK_w,	   togglescratch,  {.ui = 4 } },
 	{ MODKEY,                       XK_m,  viewnext,       {0} },
 	{ MODKEY,                       XK_n,   viewprev,       {0} },
 	{ MODKEY|ShiftMask,             XK_m,  tagtonext,      {0} },
